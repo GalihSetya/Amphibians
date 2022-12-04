@@ -6,12 +6,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-//Membuat properti untuk base URL yang disediakan di codelab
+//Membuat variabel BASE_URL untuk mendefinisikan master URL dari flie JSON
 private const val BASE_URL =
-    "https://developer.android.com/courses/pathways/android-basics-kotlin-unit-4-pathway-2/"
+    "https://raw.githubusercontent.com/GalihSetya/FileJson/main/"
 
 
-//Membuat objek Moshi dengan pabrik adaptor Kotlin yang akan digunakan Retrofit untuk mengparse JSON
+//Membuat objek Moshi dengan adaptor Kotlin yang akan digunakan Retrofit untuk mengparse JSON
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
@@ -22,9 +22,10 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
+// interface PlanetApiService yang memanggil file JSON
 interface AmphibianApiService {
-    //Mendeklarasikan fungsi untuk mendapatkan daftar amfibi
-    @GET("android-basics-kotlin-unit-4-pathway-2-project-api.json")
+    //Mendeklarasikan methid GET untuk mendapatkan daftar amfibi dari master URL
+    @GET("db.json")
     suspend fun getAmphibians() : List<Amphibian>
 }
 

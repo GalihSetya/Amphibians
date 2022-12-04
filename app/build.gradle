@@ -39,6 +39,8 @@ android {
 
 dependencies {
 
+    // Coil
+    implementation 'io.coil-kt:coil:2.2.2'
 // Moshi
     implementation "com.squareup.moshi:moshi-kotlin:$moshi"
     // Retrofit with Moshi Converter

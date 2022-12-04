@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Amphibians</string>
+    <string name="fragment_amphibian_detail">Amphihian Detail</string>
 </resources>

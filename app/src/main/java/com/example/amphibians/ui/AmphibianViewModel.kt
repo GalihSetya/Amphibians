@@ -12,7 +12,7 @@ enum class AmphibianApiStatus {LOADING, ERROR, DONE}
 
 class AmphibianViewModel : ViewModel() {
 
-    //Membuat properti untuk mewakili MutableLiveData dan LiveData untuk status API
+    //Membuat variabel untuk mewakili MutableLiveData dan LiveData untuk status API
     private val _status = MutableLiveData<AmphibianApiStatus>()
     val status: LiveData<AmphibianApiStatus> = _status
 
@@ -24,7 +24,7 @@ class AmphibianViewModel : ViewModel() {
     private val _amphibian = MutableLiveData<Amphibian>()
     val amphibian: LiveData<Amphibian> = _amphibian
 
-    //Buat fungsi yang mendapatkan daftar amfibi dari layanan api dan atur status melalui Coroutine
+    //Membuat fungsi yang mendapatkan daftar amfibi dari layanan api dan atur status melalui Coroutine
     fun getAmphibianList() {
         viewModelScope.launch {
             _status.value = AmphibianApiStatus.LOADING
@@ -32,7 +32,7 @@ class AmphibianViewModel : ViewModel() {
                 _amphibians.value =AmphibianApi.retrofitService.getAmphibians()
                 _status.value = AmphibianApiStatus.DONE
             } catch (e: Exception) {
-                _amphibians.value = listOf()
+                _amphibians.value = emptyList()
                 _status.value = AmphibianApiStatus.ERROR
             }
         }
